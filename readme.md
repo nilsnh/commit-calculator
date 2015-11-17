@@ -1,5 +1,4 @@
-Here's a project for calculating days spent committing to a git project.It will
-parse the commits.
+An application for calculating days spent committing to a git project.
 
 # Usage
 
