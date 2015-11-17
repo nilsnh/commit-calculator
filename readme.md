@@ -4,7 +4,7 @@ An application for calculating days spent committing to a git project.
 
 1. Run the provided `git-log2json.sh` script inside the repositories from which you want
 to export the git history ([Original source](https://gist.github.com/textarcana/1306223)). You'll need to `pipe` the script output to .json a file.
-2. Place the exported .json files inside `src/resources/exported-commit-logs/`
+2. Place the exported .json file(s) inside `src/resources/exported-commit-logs/`
 3. Run `gradlew -q run -Pargs="commitAuthorToLookFor@email.org"` in the project folder to run the application.
 This should output the number of days you have spent committing code to a project.
 
