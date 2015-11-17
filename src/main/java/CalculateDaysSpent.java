@@ -32,7 +32,7 @@ public class CalculateDaysSpent {
         List<Commit> allParsedCommits = filesToRead
                 .stream()
                 .map(CalculateDaysSpent::readFile)
-                .map(CalculateDaysSpent::parseJsonString)
+                .map(CalculateDaysSpent::parseJsonStringToCommitList)
                 .flatMap(commitList -> commitList.stream())
                 .collect(Collectors.toList());
 
@@ -97,8 +97,8 @@ public class CalculateDaysSpent {
         return fileContent;
     }
 
-    private static ArrayList<Commit> parseJsonString(String content) {
-        JSONArray jsonArray = new JSONArray(content);
+    private static ArrayList<Commit> parseJsonStringToCommitList(String jsonArrayString) {
+        JSONArray jsonArray = new JSONArray(jsonArrayString);
         ArrayList<Commit> result = new ArrayList<>();
         jsonArray.forEach((objectInList -> result.add(new Commit((JSONObject) objectInList))));
         return result;
