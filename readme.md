@@ -19,7 +19,7 @@ This should output the number of days you have spent committing code to a projec
 
 # License: MIT
 
-Copyright (c) <2015> <Nils Norman Haukås>
+Copyright (c) 2015 Nils Norman Haukås
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
