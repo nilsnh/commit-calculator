@@ -22,7 +22,7 @@ public class CommitLoader {
                 .collect(Collectors.toList());
     }
 
-    static List<Path> findFilesToRead(String fileDir) {
+    private static List<Path> findFilesToRead(String fileDir) {
         List<Path> listOfFilePaths = null;
         try {
             listOfFilePaths = Files
@@ -35,7 +35,7 @@ public class CommitLoader {
         return listOfFilePaths;
     }
 
-    static String readFile(Path filePath) {
+    private static String readFile(Path filePath) {
         String fileContent = null;
         try {
             fileContent = Files.readAllLines(filePath)
@@ -47,7 +47,7 @@ public class CommitLoader {
         return fileContent;
     }
 
-    static ArrayList<Commit> parseJsonStringToCommitList(String jsonArrayString) {
+    private static ArrayList<Commit> parseJsonStringToCommitList(String jsonArrayString) {
         JSONArray jsonArray = new JSONArray(jsonArrayString);
         ArrayList<Commit> result = new ArrayList<>();
         jsonArray.forEach((objectInList -> result.add(new Commit((JSONObject) objectInList))));
