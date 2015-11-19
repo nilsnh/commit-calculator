@@ -4,11 +4,9 @@ import java.util.stream.Collectors;
 
 public class CalculateDaysSpent {
 
-    static String whooseCommitsToLookFor = null;
-
     public static void main (String [] args) throws Exception {
 
-        whooseCommitsToLookFor = Util.getCommentAuthorEmail(args);
+        final String whooseCommitsToLookFor = Util.getCommentAuthorEmail(args);
         System.out.println("The commit author email to filter commits by: " + whooseCommitsToLookFor);
 
         List<Commit> allCommits = CommitLoader.loadCommits("exported-commit-logs");
@@ -16,7 +14,7 @@ public class CalculateDaysSpent {
 
         List<Commit> commitsOwnedByAuthor = allCommits
                 .stream()
-                .filter(CalculateDaysSpent::isCommitByMe)
+                .filter(commit -> commit.getAuthor().contains(whooseCommitsToLookFor))
                 .collect(Collectors.toList());
 
         System.out.println("Number of commits owned by commit author \"" + whooseCommitsToLookFor + "\": " +
@@ -29,14 +27,6 @@ public class CalculateDaysSpent {
 
         System.out.println("Days spent committing code to the project " + daysSpentCommittingCode.size());
 
-    }
-
-    private static boolean isCommitByMe(Commit commit) {
-        if (commit.getAuthor().contains(whooseCommitsToLookFor)) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
 }
